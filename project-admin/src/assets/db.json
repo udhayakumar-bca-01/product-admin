@@ -1,0 +1,25 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "name": "Pen",
+      "description": "For writting",
+      "price": "50",
+      "img": "https://tse1.explicit.bing.net/th?id=OIP.eR83E317By1AAgKk10xZzQEWDg&pid=Api&P=0&h=180"
+    },
+    {
+      "id": "2",
+      "name": "Bike",
+      "description": "For Travelling",
+      "price": "33333",
+      "img": "https://tse3.mm.bing.net/th?id=OIP.qUNuYxEnRMh8dqNCTOTYCgHaE8&pid=Api&P=0&h=180"
+    },
+    {
+      "id": 2,
+      "name": "Bag",
+      "description": "For store things",
+      "price": "500",
+      "img": "https://tse4.mm.bing.net/th?id=OIP.oQo7pTWxgVCg3JIoA-nWHwHaHa&pid=Api&P=0&h=180"
+    }
+  ]
+}

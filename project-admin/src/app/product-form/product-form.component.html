@@ -1,0 +1,78 @@
+<div class="d-flex justify-content-center ">
+    <h4 class="m-4"> Product Admin</h4>
+    <button class="m-4 btn btn-primary btn-sm" (click)="onOpenForm()">Add new Product</button>
+</div>
+<div *ngIf="error" class=" m-2 d-flex justify-content-center text-danger">{{error}}</div>
+<div class="d-flex justify-content-center" *ngIf="isEditMode || addMode">
+    <form [formGroup]="productForm">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-9 d-flex">
+                <div class="col-md-4 m-2">
+                    <input type="text" class="form-control" placeholder="Product Name" formControlName="name">
+                    <div *ngIf="productForm.get('name')?.invalid && (productForm.get('name')?.dirty || productForm.get('name')?.touched)"
+                        class="text-danger">
+                        Name is required
+                    </div>
+                </div>
+                <div class="col-md-4 m-2">
+                    <input type="text" class="form-control" placeholder="Product Description"
+                        formControlName="description">
+                    <div *ngIf="productForm.get('description')?.invalid && (productForm.get('description')?.dirty || productForm.get('description')?.touched)"
+                        class="text-danger">
+                        Description is required
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9 d-flex ">
+                <div class="col-md-4 m-2">
+                    <input type="text" class="form-control" placeholder="image URL" formControlName="img">
+                </div>
+                <div class="col-md-4 m-2">
+                    <input type="text" class="form-control" placeholder="Price" formControlName="price">
+                    <div *ngIf="productForm.get('price')?.invalid && (productForm.get('price')?.dirty || productForm.get('price')?.touched)"
+                        class="text-danger">
+                        Price is required
+                    </div>
+                </div>
+                <div class="col-md-3 m-2">
+                    <button class="btn btn-primary btn-sm save-button" (click)="addProduct()">{{isEditMode? 'Update':
+                        'Save'}}</button>
+                    <button class="btn btn-primary btn-sm" (click)="cancelProduct()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="row d-flex justify-content-center">
+    <div class="col-md-10">
+        <table class="m-4 table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>product Image</th>
+                    <th>Name</th>
+                    <th>description</th>
+                    <th>price</th>
+                    <th colspan="2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of productList">
+                    <td>{{ item.id}}</td>
+                    <td>
+                        <img [src]='[item.img]' class="me-2" style="width: 40px" />
+                    </td>
+                    <td>{{ item.name}}</td>
+                    <td>{{ item.description }}</td>
+                    <td>{{ item.price}}</td>
+                    <button class="btn btn-md" (click)="editProduct(item)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button class="btn " (click)="deleteProduct(item.id)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
